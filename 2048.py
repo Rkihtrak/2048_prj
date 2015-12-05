@@ -11,6 +11,7 @@ direction = "hello"
 hasMoved = False
 numberOfInts = 0
 
+
 value = [[0 for x in range(4)] for x in range(4)]
 hasMerged = [[False for x in range(4)] for x in range(4)]
 
@@ -62,6 +63,29 @@ def shift(direction):
 			init_grid("clear")
 	
 	return
+ 	
+#def highestTile():
+#	i = 0
+#	j = 0
+#	while i <= 3:
+#		while j <= 3:
+#			if value[i][j] == inp:
+#				return True
+#				j = j + 1
+#			j = 0
+#			i = i + 1
+
+def gridFull():
+	i = 0;
+	j = 0;
+	while i <= 3:
+		while j <= 3:
+			if value[i][j] == 0:
+				return False
+				j = j + 1
+			j = 0
+			i = i + 1
+		return True
 
 def rand(numberOfInts):
 	rand = 0
@@ -76,8 +100,8 @@ def rand(numberOfInts):
 		if(value[randomRow][randomCol] == 0):
 			value[randomRow][randomCol] = rand
 			counter = counter - 1
-		#else if (gridFull())
-		#	counter = counter - 1
+		elif (gridFull()):
+			counter = counter - 1
 		print randomRow, randomCol, rand, "hello"
 		counter = counter - 1
 	return
