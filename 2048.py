@@ -1,9 +1,10 @@
 #!/usr/bin/python
 import string
-#karthik's code
+
 word = "new"
 i = 0
 j = 0
+inp = 2048
 status = "new"
 direction = "hello"
 hasMoved = False
@@ -22,6 +23,7 @@ def init_grid(word):
 				j = j + 1
 			j = 0
 			i = i + 1
+		
 			
 	elif word == "clear":
 		while i <= 3:
@@ -37,12 +39,35 @@ def findDirection():
 	shift(direction)
 	return
 
+def highestTile(inp):
+	i = 0
+	j = 0
+	while i <= 3:
+		while j <= 3:
+			if value[i][j] == inp:
+				return True
+				j = j + 1
+			j = 0
+			i = i + 1
+def gridFull():
+	i = 0;
+	j = 0;
+	while i <= 3:
+		while j <= 3:
+			if value[i][j] == 0:
+				return False
+				j = j + 1
+			j = 0
+			i = i + 1
+		return True
+		
+
 def shift(direction):
 	i = 0
 	j = 1
 	#left
 	hasMoved = False 
-	if ((direction == "a") || (direction == "A"))
+	if ((direction == "a") or (direction == "A")):
 		while i <= 3:
 			while j <= 3:
 				if value[i][j] != 0:
