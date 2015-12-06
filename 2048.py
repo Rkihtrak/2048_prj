@@ -317,6 +317,6 @@ while True:
 	rand(1)
 	if gameOver() == True:
 		print "YOU LOSE"
-		break
+		
 #end while 1 loop
 
