@@ -206,7 +206,17 @@ def canMove2(direction, i, j):
 		return True
 		
 
-
+def win(highest):
+	i = 0
+	j = 1
+	while i <= 0:
+		while j <= 3:
+			if value[i][j] == highest:
+				return True
+			j += 1
+		j = 0
+		i += 1
+	return False
 def shift(direction):
 	hasMoved = False 
 	#left
@@ -316,5 +326,7 @@ while True:
 	rand(1)
 	if gameOver() == True:
 		print "YOU LOSE, Please Exit out of the Program"
+	elif win(2048) == True:
+		print "YOU WIN, Please Exit out of the Program"
 #end while 1 loop
 
