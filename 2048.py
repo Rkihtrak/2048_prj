@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import string
-
+#karthik's code
 word = "new"
 i = 0
 j = 0
