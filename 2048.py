@@ -1,2 +1,2 @@
 #!/usr/bin/python
-print "Hello, Python, test This!, RAMESH TESTICLES"
+print "Hello, Python, test This!, I'll Sush your Ant"
