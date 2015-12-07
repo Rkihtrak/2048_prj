@@ -64,6 +64,32 @@ def canMove(direction, i, j):
 			elif (value[i][j+1] != 0):
 				return False
 		return True
+	######## down #######
+	elif direction == "s":
+		if (i + 1) > 3:
+			return False
+		else:
+			if (value[i+1][j] == value[i][j]) and (hasMerged[i+1][j] == False):
+				value[i+1][j] *= 2
+				value[i][j] = 0
+				hasMerged[i+1][j] = True
+				return False
+			elif (value[i+1][j] != 0):
+				return False
+		return True
+	######## down #######
+	elif direction == "w":
+		if (i - 1) < 0:
+			return False
+		else:
+			if (value[i-1][j] == value[i][j]) and (hasMerged[i-1][j] == False):
+				value[i-1][j] *= 2
+				value[i][j] = 0
+				hasMerged[i-1][j] = True
+				return False
+			elif (value[i-1][j] != 0):
+				return False
+		return True
 
 def shift(direction):
 	hasMoved = False 
@@ -87,7 +113,7 @@ def shift(direction):
 			i = i + 1
 			init_grid("clear")
 	#right
-	if direction == "d":
+	elif direction == "d":
 		i = 3
 		j = 2
 		while i >= 0:
@@ -104,6 +130,44 @@ def shift(direction):
 				j -= 1
 			j = 2
 			i -= 1
+			init_grid("clear")
+	#down
+	elif direction == "s":
+		i = 2
+		j = 3
+		while i >= 0:
+			while j >= 0:
+				if value[i][j] != 0:
+					if canMove(direction, i, j):
+						hasMoved = True
+						
+					while canMove(direction, i, j):
+						value[i+1][j] = value[i][j]
+						hasMerged[i+1][j] = hasMerged[i][j]
+						value[i][j] = 0
+						i += 1
+				j = j - 1
+			j = 3
+			i = i - 1
+			init_grid("clear")
+		#up
+	elif direction == "w":
+		i = 1
+		j = 0
+		while i <= 3:
+			while j <= 3:
+				if value[i][j] != 0:
+					if canMove(direction, i, j):
+						hasMoved = True
+						
+					while canMove(direction, i, j):
+						value[i-1][j] = value[i][j]
+						hasMerged[i-1][j] = hasMerged[i][j]
+						value[i][j] = 0
+						i -= 1
+				j = j + 1
+			j = 0
+			i = i + 1
 			init_grid("clear")
 	
 	return
