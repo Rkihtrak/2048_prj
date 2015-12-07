@@ -32,6 +32,29 @@ def init_grid(word):
 			i = i + 1
 	return
 
+def highestTile(inp):
+	i = 0
+	j = 0
+	while i <= 3:
+		while j <= 3:
+			if value[i][j] == inp:
+				return True
+				j = j + 1
+			j = 0
+			i = i + 1
+			
+def gridFull():
+	i = 0;
+	j = 0;
+	while i <= 3:
+		while j <= 3:
+			if value[i][j] == 0:
+				return False
+				j = j + 1
+			j = 0
+			i = i + 1
+		return True
+
 def findDirection():
 	direction = (raw_input("Enter direction: "))
 	shift(direction)
