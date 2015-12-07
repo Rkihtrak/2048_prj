@@ -42,7 +42,7 @@ def shift(direction):
 	j = 1
 	#left
 	hasMoved = False 
-	if ((direction == "a") || (direction == "A"))
+	if (direction == "a") or (direction == "A"):
 		while i <= 3:
 			while j <= 3:
 				if value[i][j] != 0:
