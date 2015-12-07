@@ -21,9 +21,7 @@ def init_grid(word):
 				hasMerged[i][j] = False
 				j = j + 1
 			j = 0
-			i = i + 1
-		
-			
+			i = i + 1	
 	elif word == "clear":
 		while i <= 3:
 			while j <= 3:
@@ -38,19 +36,34 @@ def findDirection():
 	shift(direction)
 	return
 
+def canMove(direction, i, j):
+	if direction == "a":
+		if (j - 1) < 0:
+			return False
+		else:
+			if (value[i][j-1] == value[i][j]) and (hasMerged[i][j-1] == False):
+				value[i][j-1] *= 2;
+				score += value[i][j-1]
+				value[i][j] = 0
+				hasMerged[i][j-1] = True
+				return False
+			elif (value[i][j-1] != 0):
+				return False
+	return True
+
 def shift(direction):
 	i = 0
 	j = 1
 	#left
 	hasMoved = False 
-	if ((direction == "a") || (direction == "A"))
+	if direction == "a":
 		while i <= 3:
 			while j <= 3:
 				if value[i][j] != 0:
-					if canmove(direction, i, j):
+					if canMove(direction, i, j):
 						hasMoved = True
 						
-					while canmove(direction, i, j):
+					while canMove(direction, i, j):
 						value[i][j-1] = value[i][j]
 						value[i][j] = 0
 						j -= 1
@@ -60,19 +73,18 @@ def shift(direction):
 			init_grid("clear")
 	
 	return
+init_grid(status)
+value[0][3] = 1	
 
 while True:
-		init_grid(status)
-		findDirection()
-		while i <= 3:
-			while j <= 3:
-				print value[i][j], " ",
-				j = j + 1
-			print "\n"
-			j = 0
-			i = i + 1
-			
-		break
-	
-	
+	while i <= 3:
+		while j <= 3:
+			print value[i][j], " ",
+			j = j + 1
+		print "\n"
+		j = 0
+		i = i + 1
+	i = 0
+	j = 0
+	findDirection()
 #end while 1 loop
