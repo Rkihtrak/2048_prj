@@ -22,6 +22,7 @@ def init_grid(word):
 				j = j + 1
 			j = 0
 			i = i + 1
+		
 			
 	elif word == "clear":
 		while i <= 3:
