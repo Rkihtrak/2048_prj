@@ -1,9 +1,12 @@
 #!/usr/bin/python
 import string
+import random
 
 word = "new"
 i = 0
 j = 0
+inp = 2048
+numberOfInts = 0
 status = "new"
 direction = "hello"
 hasMoved = False
@@ -39,9 +42,9 @@ def highestTile(inp):
 		while j <= 3:
 			if value[i][j] == inp:
 				return True
-				j = j + 1
-			j = 0
-			i = i + 1
+			j = j + 1
+		j = 0
+		i = i + 1
 			
 def gridFull():
 	i = 0;
@@ -50,10 +53,28 @@ def gridFull():
 		while j <= 3:
 			if value[i][j] == 0:
 				return False
-				j = j + 1
-			j = 0
-			i = i + 1
+			j = j + 1
+		j = 0
+		i = i + 1
 		return True
+
+def rand(numberOfInts):
+	rand = 0
+	randomRow = 0
+	randomCol = 0
+	counter = numberOfInts
+	
+	while counter != 0:
+		randomRow = int(random.random() * 4)
+		randomCol = int(random.random() * 4)
+		rand = int(random.random() * 2) *2 + 2
+		if(value[randomRow][randomCol] == 0):
+			value[randomRow][randomCol] = rand
+			counter = counter - 1
+		elif (gridFull()):
+			counter = counter - 1
+		#print randomRow, randomCol, rand, "hello"
+	return
 
 def findDirection():
 	direction = (raw_input("Enter direction: "))
@@ -192,22 +213,26 @@ def shift(direction):
 			j = 0
 			i = i + 1
 			init_grid("clear")
-	
 	return
 	
 	
 init_grid(status)
-value[0][3] = 1	
-value[0][2] = 1	
+#value[0][3] = 1	
+value[0][2] = 2	
 while True:
 	while i <= 3:
 		while j <= 3:
-			print value[i][j], " ",
+			if value[i][j] == 0:
+				print "  ",
+			else:
+				print value[i][j], " ",
 			j = j + 1
 		print "\n"
 		j = 0
 		i = i + 1
 	i = 0
 	j = 0
+	
 	findDirection()
+	rand(1)
 #end while 1 loop
