@@ -312,11 +312,9 @@ while True:
 		i = i + 1
 	i = 0
 	j = 0
-	findDirection()
-	gameOver()	
+	findDirection()	
 	rand(1)
 	if gameOver() == True:
-		print "YOU LOSE"
-		
+		print "YOU LOSE, Please Exit out of the Program"
 #end while 1 loop
 
