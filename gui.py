@@ -4,15 +4,20 @@ import sys
 import random
 from Tkinter import *
 
+
+root = Tk()
 word = "new"
 i = 0
 j = 0
+count1 = 0
+count2 = 1
 inp = 2048
 numberOfInts = 0
 status = "new"
 direction = "hello"
 hasMoved = False
 global score
+
 
 value = [[0 for x in range(4)] for x in range(4)]
 hasMerged = [[False for x in range(4)] for x in range(4)]
@@ -75,13 +80,13 @@ def rand(numberOfInts):
 			counter = counter - 1
 		elif (gridFull()):
 			counter = counter - 1
-		#print randomRow, randomCol, rand, "hello"
+		print randomRow, randomCol, rand, "hello"
 	return
 
-def findDirection():
-	direction = (raw_input("Enter direction: "))
-	shift(direction)
-	return
+# def findDirection():
+# 	direction = (raw_input("Enter direction: "))
+# 	shift(direction)
+# 	return
 
 def canMove(direction, i, j):
 	###### LEFT ######
@@ -217,45 +222,102 @@ def shift(direction):
 			init_grid("clear")
 	return
 
-#def output(stage):
-#	if(stage == "initialize")
+
+def initGui():
+
+	root.configure(background = "bisque4")
+	root.wm_title("2048 - UNIX")
+	mainFrame = Frame(root)
+	titleLabel = Label(root, text = "2048: By Sushant, Tom, and Karthik", font = "Helvetica 14 bold", bg = "PeachPuff4", fg = "white" )
+	titleLabel.place(x = 100, y = 0)
 
 
+	root.maxsize(500, 620)
+	root.minsize(500, 620)
 
 
-#	return
+	button1 = Button(root, text="Up", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED, command = shift("w"))
+	button2 = Button(root, text="Left", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED, command = shift("a") )
+	button3 = Button(root, text="Down", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED, command = shift("s"))
+	button4 = Button(root, text="Right", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED, command = shift("d"))
+
+
+	button1.place(x = 370, y = 515)
+	button2.place(x = 310, y = 565)
+	button3.place(x = 370, y = 565)
+	button4.place(x = 430, y = 565)
+
+	canvas1 = Canvas(root, width = 460, height = 460, bg = "bisque2")
+	canvas1.place(x = 20, y = 40)
+
+
+	rect  = canvas1.create_rectangle(20, 20 , 110, 110, fill = "NavajoWhite2" )
+	rect2 = canvas1.create_rectangle(130, 20, 220, 110, fill = "NavajoWhite2" )
+	rect3 = canvas1.create_rectangle(240, 20, 330, 110, fill = "NavajoWhite2" )
+	rect4 = canvas1.create_rectangle(350, 20, 440, 110, fill = "NavajoWhite2" )
+
+	rect5 = canvas1.create_rectangle(20, 130 , 110, 220, fill = "NavajoWhite2" )
+	rect6 = canvas1.create_rectangle(130, 130, 220, 220, fill = "NavajoWhite2" )
+	rect7 = canvas1.create_rectangle(240, 130, 330, 220, fill = "NavajoWhite2" )
+	rect8 = canvas1.create_rectangle(350, 130, 440, 220, fill = "NavajoWhite2" )
+
+	rect9  = canvas1.create_rectangle(20, 240 , 110, 330, fill = "NavajoWhite2" )
+	rect10 = canvas1.create_rectangle(130, 240, 220, 330, fill = "NavajoWhite2" )
+	rect11 = canvas1.create_rectangle(240, 240, 330, 330, fill = "NavajoWhite2" )
+	rect12 = canvas1.create_rectangle(350, 240, 440, 330, fill = "NavajoWhite2" )
+
+	rect13 = canvas1.create_rectangle(20, 350 , 110, 440, fill = "NavajoWhite2" )
+	rect14 = canvas1.create_rectangle(130, 350, 220, 440, fill = "NavajoWhite2" )
+	rect15 = canvas1.create_rectangle(240, 350, 330, 440, fill = "NavajoWhite2" )
+	rect16 = canvas1.create_rectangle(350, 350, 440, 440, fill = "NavajoWhite2" )
+
+	rand(2)
+
+	box00 = Label(root, text = value[0][0], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box00.place(x = 50, y= 85)
+	box01 = Label(root, text = value[0][1], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box01.place(x = 165, y= 85)
+	box02 = Label(root, text = value[0][2], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box02.place(x = 275, y= 85)
+	box03 = Label(root, text = value[0][3], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box03.place(x = 385, y= 85)
+
+	box10 = Label(root, text = value[1][0], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box10.place(x = 50, y= 195)
+	box11 = Label(root, text = value[1][1], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box11.place(x = 165, y= 195)
+	box12 = Label(root, text = value[1][2], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box12.place(x = 275, y= 195)
+	box13 = Label(root, text = value[1][3], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box13.place(x = 385, y= 195)
+
+	box20 = Label(root, text = value[2][0], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box20.place(x = 50, y= 305)
+	box21 = Label(root, text = value[2][1], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box21.place(x = 165, y= 305)
+	box22 = Label(root, text = value[2][2], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box22.place(x = 275, y= 305)
+	box23 = Label(root, text = value[2][3], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box23.place(x = 385, y= 305)
+
+	box30 = Label(root, text = value[3][0], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box30.place(x = 50, y= 415)
+	box31 = Label(root, text = value[3][1], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box31.place(x = 165, y= 415)
+	box32 = Label(root, text = value[3][2], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box32.place(x = 275, y= 415)
+	box33 = Label(root, text = value[3][3], width = 4, font = "Helvetica 20 bold", bg = "NavajoWhite2", fg = "white" )
+	box33.place(x = 385, y= 415)
+
 	
+#end of initGui
+
+
+# while 1:
+# print "ANYTHINGG"
 init_grid(status)
-rand(2)
-
-root = Tk()
-root.configure(background = "bisque4")
-root.wm_title("2048 - UNIX")
-mainFrame = Frame(root)
-titleLabel = Label(root, text = "2048: By Sushant, Tom, and Karthik", font = "Helvetica 14 bold", bg = "PeachPuff4", fg = "white" )
-titleLabel.place(x = 100, y = 0)
-
-
-root.maxsize(500,500)
-root.minsize(500,500)
-
-
-button1 = Button(root, text="left", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED,command = shift("a"))
-button2 = Button(root, text="right", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED )
-button3 = Button(root, text="up", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED)
-button4 = Button(root, text="down", fg = "white", bg = "firebrick3", width = 3, height = 2, relief = RAISED)
-
-
-button1.place(x = 380, y = 400)
-button2.place(x = 320, y = 450)
-button3.place(x = 380, y = 450)
-button4.place(x = 440, y = 450)
-
-
-
-
-
-
+initGui()
+print "hello world"
 
 #while True:
 #	while i <= 3:
@@ -278,5 +340,6 @@ button4.place(x = 440, y = 450)
 
 
 
-root.mainloop()
 
+
+root.mainloop()
